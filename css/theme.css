@@ -285,10 +285,43 @@ body {
 	border-color: var(--vitalik-border) !important;
 	box-shadow: 0 8px 0 0 var(--vitalik-purple), 0 0 40px var(--vitalik-glow) !important;
 	backdrop-filter: blur(12px);
+	overflow: hidden;
+	align-items: stretch;
 }
 
 .about__body::before {
 	display: none !important;
+}
+
+.about__content {
+	flex: 0 0 55%;
+	min-width: 0;
+}
+
+.about__image {
+	flex: 0 0 45% !important;
+	width: 45% !important;
+	max-width: 45% !important;
+	overflow: hidden !important;
+	transform: none !important;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	min-width: 0;
+	align-self: stretch;
+}
+
+.about__image .card-image img {
+	position: static !important;
+	width: 100% !important;
+	height: 100% !important;
+	max-width: 100% !important;
+	max-height: 100% !important;
+	object-fit: cover !important;
+	object-position: center top !important;
+	transform: none !important;
+	-webkit-transform: none !important;
+	filter: none !important;
 }
 
 .about__title {
@@ -298,11 +331,6 @@ body {
 
 .about__text {
 	color: var(--vitalik-muted) !important;
-}
-
-.about__image img {
-	filter: drop-shadow(0 0 40px rgba(147, 51, 234, 0.6));
-	border-radius: 1rem;
 }
 
 /* ── Donation / How to Buy ── */
@@ -353,9 +381,32 @@ body {
 	color: #fff !important;
 }
 
-.donation__why-image img {
-	filter: drop-shadow(0 0 40px rgba(147, 51, 234, 0.5));
+.donation__why-image {
+	overflow: hidden;
+	max-width: 30%;
+	flex: 0 0 30%;
 	border-radius: 1rem;
+}
+
+.donation__why-image img,
+.features__how-image img {
+	border-radius: 1rem;
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
+
+.features__how-image {
+	overflow: hidden;
+	border-radius: 1rem;
+	flex: 0 0 42%;
+	max-width: 42%;
+}
+
+.tokenomics__items::before {
+	display: none !important;
 }
 
 /* ── Every / Token Info ── */
@@ -367,6 +418,38 @@ body {
 	background: var(--vitalik-card) !important;
 	border-color: var(--vitalik-border) !important;
 	box-shadow: 0 8px 0 0 var(--vitalik-purple), 0 0 40px var(--vitalik-glow) !important;
+	overflow: hidden;
+	align-items: stretch;
+}
+
+.every__image {
+	flex: 0 0 40% !important;
+	width: 40% !important;
+	max-width: 40% !important;
+	overflow: hidden !important;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	min-width: 0;
+	align-self: stretch;
+}
+
+.every__image img,
+.every__image .card-image img {
+	position: static !important;
+	width: 100% !important;
+	height: 100% !important;
+	max-width: 100% !important;
+	max-height: 100% !important;
+	object-fit: cover !important;
+	object-position: center top !important;
+	transform: none !important;
+	-webkit-transform: none !important;
+	bottom: auto !important;
+	left: auto !important;
+	aspect-ratio: auto !important;
+	filter: none !important;
+	border-radius: 0;
 }
 
 .every__title {
@@ -385,10 +468,6 @@ body {
 .every__item span:nth-child(3),
 .every__item span:nth-child(1) {
 	color: var(--vitalik-muted) !important;
-}
-
-.every__image img {
-	filter: drop-shadow(0 0 30px rgba(34, 211, 238, 0.3));
 }
 
 /* ── Features / Roadmap ── */
@@ -503,11 +582,6 @@ body {
 	color: var(--vitalik-cyan) !important;
 }
 
-.tokenomics__items::before {
-	background-image: url("../img/tokenomics/01.png") !important;
-	filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.5));
-}
-
 .item-tokenomics__text {
 	color: var(--vitalik-muted) !important;
 }
@@ -521,25 +595,54 @@ body {
 	background: var(--vitalik-card) !important;
 	border-color: var(--vitalik-border) !important;
 	box-shadow: 0 8px 0 0 var(--vitalik-purple), 0 0 50px var(--vitalik-glow) !important;
+	overflow: hidden;
+	align-items: stretch;
+	padding: 0 !important;
+}
+
+.follow__body-info {
+	flex: 1 1 55%;
+	padding: 4rem;
+	min-width: 0;
+}
+
+.follow__body-image {
+	position: relative !important;
+	flex: 0 0 45% !important;
+	width: 45% !important;
+	max-width: 45% !important;
+	overflow: hidden !important;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	bottom: auto !important;
+	right: auto !important;
+	aspect-ratio: auto !important;
+	margin: 0 !important;
+	min-width: 0;
+	align-self: stretch;
+}
+
+.follow__body-image img,
+.follow__body-image .card-image img {
+	position: static !important;
+	width: 100% !important;
+	height: 100% !important;
+	max-width: 100% !important;
+	max-height: 100% !important;
+	object-fit: cover !important;
+	object-position: center top !important;
+	transform: none !important;
+	-webkit-transform: none !important;
+	bottom: auto !important;
+	right: auto !important;
+	filter: none !important;
+	border-radius: 0;
 }
 
 .follow__body-title {
 	color: var(--vitalik-cyan) !important;
 	text-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
-}
-
-.follow__body-image img {
-	filter: drop-shadow(0 0 50px rgba(147, 51, 234, 0.6));
-	border-radius: 0 0 1rem 0;
-}
-
-.donation__why-image img,
-.features__how-image img {
-	border-radius: 1rem;
-}
-
-.every__image img {
-	border-radius: 1rem;
 }
 
 /* ── Footer ── */
@@ -627,4 +730,95 @@ body {
 ::selection {
 	background: var(--vitalik-violet);
 	color: #fff;
+}
+
+/* ── Card image clip (fixes overflow) ── */
+.card-image {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: block;
+	border-radius: 0 12px 12px 0;
+	isolation: isolate;
+}
+
+.about__body,
+.every__body,
+.follow__body {
+	overflow: hidden !important;
+	border-radius: 16px;
+}
+
+.about__body .card-image,
+.every__body .card-image,
+.follow__body .card-image {
+	min-height: 280px;
+}
+
+@media (min-width: 62em) {
+	.about__image img,
+	.every__image img,
+	.follow__body-image img,
+	.about__image .card-image img,
+	.every__image .card-image img,
+	.follow__body-image .card-image img {
+		position: static !important;
+		width: 100% !important;
+		height: 100% !important;
+		max-width: 100% !important;
+		transform: none !important;
+		-webkit-transform: none !important;
+	}
+
+	.every__image img {
+		width: 100% !important;
+		transform: none !important;
+		-webkit-transform: none !important;
+		left: auto !important;
+		bottom: auto !important;
+	}
+
+	.follow__body-image {
+		position: relative !important;
+		bottom: auto !important;
+		right: auto !important;
+	}
+}
+
+@media (max-width: 62.24875em) {
+	.follow__body {
+		padding: 0 !important;
+	}
+
+	.follow__body-info {
+		padding: 2rem;
+	}
+
+	.about__image,
+	.every__image,
+	.follow__body-image {
+		flex: none !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		margin-top: 0 !important;
+	}
+
+	.about__image img,
+	.every__image img,
+	.follow__body-image img {
+		transform: none !important;
+		-webkit-transform: none !important;
+	}
+
+	.card-image {
+		border-radius: 0 0 12px 12px;
+		max-height: 280px;
+	}
+
+	.about__body .card-image,
+	.every__body .card-image,
+	.follow__body .card-image {
+		min-height: 0;
+		max-height: 280px;
+	}
 }
