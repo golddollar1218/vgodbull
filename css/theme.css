@@ -13,6 +13,7 @@
 	--vitalik-border: rgba(147, 51, 234, 0.5);
 	--vitalik-text: #f0e6ff;
 	--vitalik-muted: #c4b5fd;
+	--header-offset: calc(3.5rem + 2.5rem);
 }
 
 /* ── Base ── */
@@ -45,7 +46,8 @@ body {
 
 /* ── Header ── */
 .header {
-	background: linear-gradient(180deg, rgba(6, 4, 15, 0.95) 0%, rgba(6, 4, 15, 0) 100%);
+	background: var(--vitalik-deep);
+	border-bottom: 1px solid rgba(147, 51, 234, 0.15);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
 }
@@ -113,10 +115,11 @@ body {
 	box-shadow: 0 0 30px var(--vitalik-cyan), 0 4px 0 0 rgba(0, 0, 0, 0.4);
 }
 
-/* ── Hero (Banner) ── */
+/* ── Hero (Banner) — full width + vivid height ── */
 .hero--banner {
 	min-height: 100vh;
 	overflow: hidden;
+	background: var(--vitalik-deep);
 }
 
 .hero--banner::before {
@@ -124,20 +127,36 @@ body {
 }
 
 .hero--banner .hero__background {
-	top: 0 !important;
+	top: var(--header-offset) !important;
 	animation: none !important;
+	height: calc(100% - var(--header-offset)) !important;
+	min-height: calc(100vh - var(--header-offset));
 }
 
 .hero--banner .hero__background--banner {
 	top: 0 !important;
-	height: 100% !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: auto !important;
+	min-height: calc(100vh - var(--header-offset));
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: flex-start;
+	background: var(--vitalik-deep);
 }
 
 .hero__background--banner img {
-	object-fit: cover;
-	object-position: center 30%;
-	width: 100%;
-	height: 100%;
+	position: relative !important;
+	top: auto !important;
+	left: auto !important;
+	display: block;
+	width: 100% !important;
+	height: max(calc(100vw / 3), calc(70vh - var(--header-offset))) !important;
+	max-width: 100% !important;
+	flex: 0 0 auto;
+	object-fit: cover !important;
+	object-position: center top !important;
 }
 
 .hero__overlay {
@@ -145,8 +164,8 @@ body {
 	inset: 0;
 	z-index: 3;
 	background:
-		linear-gradient(180deg, rgba(6, 4, 15, 0.3) 0%, transparent 30%),
-		linear-gradient(0deg, rgba(6, 4, 15, 0.95) 0%, rgba(6, 4, 15, 0.4) 40%, transparent 70%);
+		linear-gradient(180deg, rgba(6, 4, 15, 0.25) 0%, transparent 35%),
+		linear-gradient(0deg, rgba(6, 4, 15, 0.97) 0%, rgba(6, 4, 15, 0.55) 35%, rgba(6, 4, 15, 0.15) 65%, transparent 85%);
 	pointer-events: none;
 }
 
@@ -218,24 +237,60 @@ body {
 	color: var(--vitalik-cyan);
 }
 
-.hero--banner .hero__button--white:first-child {
+.hero--banner .hero__button--white:first-child,
+.hero__button--buy {
 	background: linear-gradient(135deg, var(--vitalik-violet) 0%, var(--vitalik-purple) 100%);
 	border-color: var(--vitalik-cyan);
 	padding: 0.875rem 1.75rem;
 	width: auto;
 	height: auto;
 	gap: 0.5rem;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
 }
 
-.hero--banner .hero__button--white:first-child span {
+.hero--banner .hero__button--white:first-child span,
+.hero__button--buy span {
 	color: #fff;
 	font-family: "Luckiest Guy", sans-serif;
 	font-size: 1.125rem;
 }
 
-.hero--banner .hero__button--white:first-child svg {
-	fill: #fff;
+.hero__button-icon {
+	width: 1.375rem;
+	height: 1.375rem;
 	flex-shrink: 0;
+	display: block;
+}
+
+.hero__button--white img[src*="dex.png"] {
+	filter: brightness(0) invert(1);
+}
+
+.hero__button--dext {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	width: auto !important;
+	height: auto !important;
+	padding: 0.875rem 1.25rem !important;
+}
+
+.hero__button--dext img {
+	height: 1.75rem;
+	width: auto;
+	max-width: none;
+	filter: none !important;
+}
+
+.hero__button--dext span {
+	color: #fff;
+	font-family: "Luckiest Guy", sans-serif;
+	font-size: 1.125rem;
+	line-height: 1;
+	white-space: nowrap;
 }
 
 .hero--banner .hero__image {
@@ -275,9 +330,32 @@ body {
 	100% { bottom: 105%; opacity: 0; transform: scale(0.5); }
 }
 
-/* ── About ── */
+/* ── About (original side layout + full image height) ── */
+.page__about {
+	position: relative;
+	z-index: 5 !important;
+	padding-bottom: 3rem !important;
+}
+
+.page__about,
+.about,
+.about__container,
+.about__body,
+.about__image {
+	overflow: visible !important;
+}
+
 .about {
+	position: relative;
+	z-index: 5 !important;
 	background: url("../img/about/bg.svg") center/cover no-repeat, linear-gradient(180deg, var(--vitalik-deep) 0%, var(--vitalik-space) 50%, var(--vitalik-deep) 100%) !important;
+}
+
+.about__container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .about__body {
@@ -285,8 +363,14 @@ body {
 	border-color: var(--vitalik-border) !important;
 	box-shadow: 0 8px 0 0 var(--vitalik-purple), 0 0 40px var(--vitalik-glow) !important;
 	backdrop-filter: blur(12px);
-	overflow: hidden;
-	align-items: stretch;
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: flex-start !important;
+	overflow: visible !important;
+	width: 100%;
+	max-width: 1246px;
+	height: auto !important;
+	min-height: auto !important;
 }
 
 .about__body::before {
@@ -294,34 +378,51 @@ body {
 }
 
 .about__content {
-	flex: 0 0 55%;
-	min-width: 0;
+	flex: 0 0 55% !important;
+	padding: 2.5rem 2.5rem 2.5rem 2.5rem !important;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: none !important;
+	-webkit-transform: none !important;
 }
 
 .about__image {
 	flex: 0 0 45% !important;
-	width: 45% !important;
+	width: auto !important;
 	max-width: 45% !important;
-	overflow: hidden !important;
+	overflow: visible !important;
 	transform: none !important;
-	display: flex;
-	align-items: stretch;
-	justify-content: center;
-	min-width: 0;
-	align-self: stretch;
+	-webkit-transform: none !important;
+	display: flex !important;
+	align-items: flex-end !important;
+	justify-content: center !important;
+	position: relative;
+	pointer-events: auto;
+	height: auto !important;
+	min-height: auto !important;
+	align-self: auto !important;
 }
 
-.about__image .card-image img {
-	position: static !important;
+.about__image img {
+	position: relative !important;
+	z-index: 2;
 	width: 100% !important;
-	height: 100% !important;
+	height: auto !important;
 	max-width: 100% !important;
-	max-height: 100% !important;
-	object-fit: cover !important;
-	object-position: center top !important;
+	max-height: none !important;
+	min-height: auto !important;
+	object-fit: contain !important;
+	object-position: center bottom !important;
 	transform: none !important;
 	-webkit-transform: none !important;
 	filter: none !important;
+	display: block;
+	flex-shrink: 0;
+	border-radius: 0 12px 12px 0;
 }
 
 .about__title {
@@ -333,9 +434,45 @@ body {
 	color: var(--vitalik-muted) !important;
 }
 
+@media (max-width: 61.99875em) {
+	.about__body {
+		flex-direction: column !important;
+		align-items: center !important;
+		text-align: center;
+	}
+
+	.about__content {
+		flex: 0 0 auto !important;
+		width: 100%;
+		align-items: center !important;
+		text-align: center;
+		padding: 1.25rem !important;
+	}
+
+	.about__image {
+		flex: 0 0 auto !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		align-items: center !important;
+	}
+
+	.about__image img {
+		width: 100% !important;
+		height: auto !important;
+		border-radius: 0 0 12px 12px;
+		transform: none !important;
+		-webkit-transform: none !important;
+	}
+}
+
 /* ── Donation / How to Buy ── */
 .donation {
 	background: var(--vitalik-space) !important;
+	z-index: 4 !important;
+}
+
+.donation__top {
+	z-index: 0 !important;
 }
 
 .donation__title,
@@ -379,6 +516,23 @@ body {
 
 .donation__card a > span {
 	color: #fff !important;
+}
+
+.donation__why-cards {
+	display: grid !important;
+	width: 100% !important;
+	gap: 1.25rem !important;
+}
+
+@media (min-width: 62.24875em) {
+	.donation__why-cards {
+		grid-template-columns: repeat(3, 1fr) !important;
+	}
+}
+
+.donation__why-card {
+	width: 100% !important;
+	min-width: 0;
 }
 
 .donation__why-image {
@@ -703,14 +857,17 @@ body {
 .about__button {
 	background: linear-gradient(135deg, var(--vitalik-violet) 0%, var(--vitalik-purple) 100%) !important;
 	border-color: var(--vitalik-cyan) !important;
+	display: inline-flex !important;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .about__button span {
 	color: #fff !important;
 }
 
-.about__button svg path {
-	fill: #fff;
+.footer__social-item img[src*="dex2.svg"] {
+	filter: brightness(0) invert(1);
 }
 
 ::-webkit-scrollbar {
@@ -732,6 +889,54 @@ body {
 	color: #fff;
 }
 
+/* About — height fix overrides */
+.page__about .about__body {
+	flex-direction: row !important;
+	align-items: flex-start !important;
+	overflow: visible !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.page__about .about__image {
+	flex: 0 0 45% !important;
+	max-width: 45% !important;
+	height: auto !important;
+	max-height: none !important;
+	overflow: visible !important;
+	align-self: auto !important;
+	transform: none !important;
+	-webkit-transform: none !important;
+}
+
+.page__about .about__image img {
+	width: 100% !important;
+	height: auto !important;
+	max-height: none !important;
+	min-height: auto !important;
+	object-fit: contain !important;
+	transform: none !important;
+	-webkit-transform: none !important;
+}
+
+.page__about .about__content {
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: none !important;
+}
+
+@media (max-width: 61.99875em) {
+	.page__about .about__body {
+		flex-direction: column !important;
+	}
+
+	.page__about .about__image {
+		flex: 0 0 auto !important;
+		max-width: 100% !important;
+		width: 100% !important;
+	}
+}
+
 /* ── Card image clip (fixes overflow) ── */
 .card-image {
 	width: 100%;
@@ -742,24 +947,25 @@ body {
 	isolation: isolate;
 }
 
-.about__body,
 .every__body,
 .follow__body {
 	overflow: hidden !important;
 	border-radius: 16px;
 }
 
-.about__body .card-image,
 .every__body .card-image,
 .follow__body .card-image {
 	min-height: 280px;
 }
 
 @media (min-width: 62em) {
-	.about__image img,
+	.about__content {
+		padding: 2.5rem 3rem !important;
+		padding-bottom: 2.5rem !important;
+	}
+
 	.every__image img,
 	.follow__body-image img,
-	.about__image .card-image img,
 	.every__image .card-image img,
 	.follow__body-image .card-image img {
 		position: static !important;
@@ -794,7 +1000,6 @@ body {
 		padding: 2rem;
 	}
 
-	.about__image,
 	.every__image,
 	.follow__body-image {
 		flex: none !important;
@@ -803,22 +1008,59 @@ body {
 		margin-top: 0 !important;
 	}
 
-	.about__image img,
 	.every__image img,
 	.follow__body-image img {
 		transform: none !important;
 		-webkit-transform: none !important;
 	}
 
-	.card-image {
+	.every__body .card-image,
+	.follow__body .card-image {
 		border-radius: 0 0 12px 12px;
 		max-height: 280px;
 	}
 
-	.about__body .card-image,
 	.every__body .card-image,
 	.follow__body .card-image {
 		min-height: 0;
 		max-height: 280px;
+	}
+}
+
+/* Hero banner — below header + full width + vivid height */
+.hero--banner .hero__background {
+	top: var(--header-offset) !important;
+	height: calc(100% - var(--header-offset)) !important;
+	min-height: calc(100vh - var(--header-offset)) !important;
+}
+
+.hero--banner .hero__background--banner {
+	min-height: calc(100vh - var(--header-offset)) !important;
+}
+
+.hero--banner .hero__background--banner img {
+	position: relative !important;
+	top: auto !important;
+	left: auto !important;
+	width: 100% !important;
+	height: max(calc(100vw / 3), calc(70vh - var(--header-offset))) !important;
+	max-width: 100% !important;
+	object-fit: cover !important;
+	object-position: center top !important;
+	-o-object-fit: cover !important;
+	-o-object-position: center top !important;
+}
+
+@media (max-width: 62.24875em) {
+	.hero--banner .hero__background--banner {
+		min-height: calc(100vh - var(--header-offset)) !important;
+	}
+
+	.hero--banner .hero__background--banner img {
+		height: calc(100vw / 3) !important;
+		object-fit: contain !important;
+		object-position: center top !important;
+		-o-object-fit: contain !important;
+		-o-object-position: center top !important;
 	}
 }
