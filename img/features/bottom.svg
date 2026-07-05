@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="botGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06040f"/>
+      <stop offset="50%" stop-color="#1a0a3e"/>
+      <stop offset="100%" stop-color="#0d0820"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="200" fill="url(#botGrad)"/>
+  <path d="M0,60 C360,0 720,120 1080,40 C1260,0 1380,80 1440,30 L1440,0 L0,0 Z" fill="#9333ea" opacity="0.15"/>
+  <path d="M0,40 C480,100 960,0 1440,80 L1440,0 L0,0 Z" fill="#22d3ee" opacity="0.08"/>
+</svg>
